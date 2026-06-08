@@ -1,0 +1,230 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309674",
+        "Nama_Sekolah": "SMA NEGERI 1 PRAMBANAN",
+        "Kecamatan": "Prambanan",
+        "Alamat": "JL. Manisrenggo Kebondalem, Kelurahan Kebon Dalem Lor",
+        "Status": "Negeri",
+        "Foto": "sman1prambanan.png"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.501636, -7.732109]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309673",
+        "Nama_Sekolah": "SMA NEGERI 1 WEDI",
+        "Kecamatan": "Wedi",
+        "Alamat": "Jalan Raya Wedi-Wonosari, Bandungan RT 02 RW 12, Kelurahan Pasung",
+        "Status": "Negeri",
+        "Foto": "sman1wedi.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.596138, -7.777257]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309685",
+        "Nama_Sekolah": "SMA NEGERI 1 BAYAT",
+        "Kecamatan": "Bayat",
+        "Alamat": "Bendan, Tegalrejo, Bayat, Klaten, Kelurahan Tegalrejo",
+        "Status": "Negeri",
+        "Foto": "sman1bayat.png"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.679261, -7.781893]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309684",
+        "Nama_Sekolah": "SMA NEGERI 1 CAWAS",
+        "Kecamatan": "Cawas",
+        "Alamat": "Tugu RT.1 RW.6, Kec. Cawas, Kab. Klaten 57463, Kelurahan Tugu",
+        "Status": "Negeri",
+        "Foto": "sman1cawas.png"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.697765, -7.771236]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309681",
+        "Nama_Sekolah": "SMA NEGERI 1 JOGONALAN",
+        "Kecamatan": "Jogonalan",
+        "Alamat": "JL. KLATEN - YOGYA KM.7/23,PRAWATAN, JOGONALAN, KLATEN, Kelurahan Prawatan",
+        "Status": "Negeri",
+        "Foto": "sman1jogonalan.png"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.549392, -7.729662]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309677",
+        "Nama_Sekolah": "SMA NEGERI 1 KARANGNONGKO",
+        "Kecamatan": "Karangnongko",
+        "Alamat": "Jl. Deles, Kelurahan Somokaton",
+        "Status": "Negeri",
+        "Foto": "sman1karangnongko.png"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.536703, -7.678652]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309683",
+        "Nama_Sekolah": "SMA NEGERI 1 CEPER",
+        "Kecamatan": "Ceper",
+        "Alamat": "Kajen, Ceper, Klaten, Kelurahan Kajen",
+        "Status": "Negeri",
+        "Foto": "sman1ceper.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.668743, -7.698115]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309679",
+        "Nama_Sekolah": "SMA NEGERI 1 KARANGDOWO",
+        "Kecamatan": "Karangdowo",
+        "Alamat": "JL. SENTONO KARANGDOWO, Kelurahan Sentono",
+        "Status": "Negeri",
+        "Foto": "sman1karangdowo.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.728173, -7.701943]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309688",
+        "Nama_Sekolah": "SMA NEGERI 1 WONOSARI",
+        "Kecamatan": "Wonosari",
+        "Alamat": "Jl. Pakis - Wonosari, Klaten, Kelurahan Boto",
+        "Status": "Negeri",
+        "Foto": "sman1wonosari.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.706551, -7.606937]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309675",
+        "Nama_Sekolah": "SMA NEGERI 1 POLANHARJO",
+        "Kecamatan": "Polanharjo",
+        "Alamat": "JL. KARANGLO POLANHARJO, Keluarahan Karanglo",
+        "Status": "Negeri",
+        "Foto": "sman1polanharjo.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.650538, -7.609930]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309680",
+        "Nama_Sekolah": "SMA NEGERI 1 KARANGANOM",
+        "Kecamatan": "Karanganom",
+        "Alamat": "JL. RAYA 3 KARANGANOM, Kelurahan Karanganom",
+        "Status": "Negeri",
+        "Foto": "sman1karanganom.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.627403, -7.649932]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309682",
+        "Nama_Sekolah": "SMA NEGERI 1 JATINOM",
+        "Kecamatan": "Jatinom",
+        "Alamat": "JL. Krajan, Jatinom, Klaten, Kelurahan Krajan",
+        "Status": "Negeri",
+        "Foto": "sman1jatinom.png"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.594368, -7.626838]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309676",
+        "Nama_Sekolah": "SMA NEGERI 1 KLATEN",
+        "Kecamatan": "Klaten Selatan",
+        "Alamat": "JL. MERBABU NO. 13 KLATEN, Kelurahan Gayamprit",
+        "Status": "Negeri",
+        "Foto": "sman1klaten.jpg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.596415, -7.706823]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309689",
+        "Nama_Sekolah": "SMA NEGERI 2 KLATEN",
+        "Kecamatan": "Klaten Selatan",
+        "Alamat": "Jln. Raya Solo - Yogyakarta KM.4, Kelurahan Trunuh",
+        "Status": "Negeri",
+        "Foto": "sma2klaten.png"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.575736, -7.721138]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "NPSN": "20309690",
+        "Nama_Sekolah": "SMA NEGERI 3 KLATEN",
+        "Kecamatan": "Klaten Utara",
+        "Alamat": "JL. MAYOR SUNARYO NO.42, JONGGRANGAN, Kelurahan Jonggrangan",
+        "Status": "Negeri",
+        "Foto": "sman3klaten.jpeg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [110.617260, -7.688827]
+      }
+    }
+  ]
+}

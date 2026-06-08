@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Digital SMAN Klaten</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        #map {
+            height: 650px;
+            width: 100%;
+            border-radius: 2rem;
+        }
+        /* Desain Pop-Up */
+        .leaflet-popup-content-wrapper {
+            background: #1A2E1F !important;
+            color: #ffffff !important;
+            border-radius: 1.5rem !important;
+            padding: 8px !important;
+            box-shadow: 0 25px 50px -12px rgba(26, 44, 31, 0.4) !important;
+        }
+        .leaflet-popup-tip { background: #1A2E1F !important; }
+        .leaflet-popup-close-button { color: white !important; padding: 8px !important; }
+    </style>
+</head>
+<body class="bg-[#F3F7F2] text-gray-900 flex flex-col min-h-screen">
+
+    <nav class="bg-white/70 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100 px-8 py-4 flex justify-between items-center">
+        <div class="text-xl font-extrabold text-[#2C4A30] tracking-tight">🏫 EduGIS.</div>
+        <div class="flex gap-6 font-bold text-xs tracking-wider uppercase text-gray-500">
+            <a href="../index.html" class="hover:text-[#2C4A30] transition-colors">Beranda</a>
+            <a href="peta.html" class="text-[#2C4A30]">Peta Digital</a>
+            <a href="profil.html" class="hover:text-[#2C4A30] transition-colors">Profil</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 md:p-8">
+        <div class="grid md:grid-cols-4 gap-6 bg-white p-6 rounded-[2.5rem] shadow-xl shadow-gray-200/60 border border-gray-100">
+            
+            <div class="md:col-span-1 flex flex-col justify-between p-4 bg-[#F8FAF7] rounded-2xl border border-gray-100">
+                <div>
+                    <span class="text-[10px] font-black text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-md uppercase tracking-wider">Live Map</span>
+                    <h2 class="text-2xl font-black text-gray-900 mt-2 tracking-tight">Eksplorasi Sekolah</h2>
+                    <p class="text-xs text-gray-500 mt-2 leading-relaxed">Klik salah satu pin berlogo bundar di peta atau ketik nama sekolah untuk melihat informasi.</p>
+                    
+                    <div class="mt-6">
+                        <label for="cari-sekolah" class="text-xs font-bold uppercase text-gray-400 tracking-wider block mb-2">Cari Nama Sekolah</label>
+                        <div class="relative">
+                            <input type="text" id="cari-sekolah" placeholder="Contoh: SMAN 1 Klaten..." 
+                                   class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#2C4A30] focus:border-transparent shadow-sm transition-all">
+                            <div id="hasil-pencarian" class="absolute left-0 right-0 bg-white border border-gray-100 rounded-xl mt-1 max-h-48 overflow-y-auto shadow-xl hidden z-50 text-sm">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 pt-6 border-t border-gray-200/60 space-y-3">
+                    <div class="text-xs font-bold uppercase text-gray-400 tracking-wider">Legenda / Simbol</div>
+                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-gray-100 shadow-sm">
+                        <div class="w-4 h-4 bg-[#558850] rounded-full ring-4 ring-[#C1DEC0]"></div>
+                        <span class="text-xs font-bold text-gray-700">SMA Negeri Aktif</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 relative">
+                <div id="map" class="shadow-inner border border-gray-100"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        var map = L.map('map', { zoomControl: false }).setView([-7.7041, 110.6022], 12);
+        
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+        // 1. Pilihan Peta Dasar A (Diganti ke OpenStreetMap Gratis)
+        var petaSmooth = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+        });
+
+        // 2. Pilihan Peta Dasar B
+        var petaSatelit = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles © Esri — Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        });
+        petaSmooth.addTo(map);
+
+        // 3. Tombol Pilihan Basemap
+        var pilihanPeta_Dasar = {
+            "🗺️ Peta Minimalis": petaSmooth,
+            "🚀 Citra Satelit": petaSatelit
+        };
+
+        L.control.layers(pilihanPeta_Dasar, null, { position: 'topright' }).addTo(map);
+        var semuaLayerSekolah = [];
+
+// FUNGSI POP-UP
+        function gayaPopUp(feature, layer) {
+            if (feature.properties) {
+                var namaFoto = feature.properties.Foto ? `../assets/images/${feature.properties.Foto}` : 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=600&auto=format&fit=crop';
+
+                var isiHtml = `
+                    <div class="w-60 font-sans text-white overflow-hidden rounded-xl flex flex-col items-center text-center">
+                        
+                        <div class="w-28 h-28 my-3 bg-white rounded-2xl flex items-center justify-center p-3 shadow-md border border-white/20">
+                            <img src="${namaFoto}" alt="Logo Sekolah" class="max-w-full max-h-full object-contain">
+                        </div>
+                        
+                        <div class="px-1 py-2 w-full">
+                            <div class="text-[9px] font-extrabold text-[#C1DEC0] tracking-widest uppercase mb-1">🏢 INSTITUSI PENDIDIKAN</div>
+                            <h3 class="font-black text-base tracking-tight mb-2 border-b border-white/10 pb-1.5 text-white px-2">
+                                ${feature.properties.Nama_Sekolah || 'Data Kosong'}
+                            </h3>
+                            
+                            <div class="space-y-1.5 text-[11px] text-gray-300 text-left px-2">
+                                <p class="flex items-center gap-1.5">🔢 <span class="font-bold text-white">NPSN:</span> ${feature.properties.NPSN || '-'}</p>
+                                <p class="flex items-center gap-1.5">🏛️ <span class="font-bold text-white">Status:</span> ${feature.properties.Status || 'Negeri'}</p>
+                                <p class="flex items-center gap-1.5">🟢 <span class="font-bold text-white">Kecamatan:</span> ${feature.properties.Kecamatan || '-'}</p>
+                                <p class="flex items-start gap-1.5 leading-relaxed">📍 <span class="font-bold text-white">Alamat:</span> ${feature.properties.Alamat || '-'}</p>
+                            </div>
+
+                            <div class="mt-4 pt-2.5 border-t border-white/10 px-2">
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=${feature.geometry.coordinates[1]},${feature.geometry.coordinates[0]}" 
+                                   target="_blank" 
+                                   class="block text-center bg-[#558850] hover:bg-[#436b3e] text-white text-[10px] font-black uppercase tracking-widest py-2.5 rounded-xl transition-all duration-200 shadow-md active:scale-95">
+                                   🚗 Petunjuk Rute
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                `;
+                layer.bindPopup(isiHtml);
+                
+                semuaLayerSekolah.push({
+                    nama: feature.properties.Nama_Sekolah ? feature.properties.Nama_Sekolah.toLowerCase() : '',
+                    namaAsli: feature.properties.Nama_Sekolah || '',
+                    layer: layer
+                });
+            }
+        }
+
+        fetch('../data/SMAN_Klaten.geojson')
+            .then(res => res.json())
+            .then(data => {
+                L.geoJSON(data, {
+                    onEachFeature: gayaPopUp,
+                    pointToLayer: (feature, latlng) => {
+                        return L.circleMarker(latlng, {
+                            radius: 9,
+                            fillColor: "#2C4A30",
+                            color: "#C1DEC0",
+                            weight: 3,
+                            opacity: 1,
+                            fillOpacity: 0.9
+                        });
+                    }
+                }).addTo(map);
+            })
+            .catch(err => console.error("GeoJSON Error:", err));
+
+        // LOGIKA PROSES PENCARIAN
+        const inputCari = document.getElementById('cari-sekolah');
+        const kontainerHasil = document.getElementById('hasil-pencarian');
+
+        inputCari.addEventListener('input', function() {
+            const kataKunci = this.value.toLowerCase().trim();
+            kontainerHasil.innerHTML = '';
+
+            if (kataKunci === '') {
+                kontainerHasil.classList.add('hidden');
+                return;
+            }
+
+            const hasilFilter = semuaLayerSekolah.filter(sekolah => {
+                const namaSekolahBersih = sekolah.namaAsli.toLowerCase().trim();
+                return namaSekolahBersih.includes(kataKunci);
+            });
+
+            if (hasilFilter.length > 0) {
+                kontainerHasil.classList.remove('hidden');
+                hasilFilter.forEach(sekolah => {
+                    const item = document.createElement('div');
+                    item.className = 'px-4 py-2.5 hover:bg-[#E2ECE0] cursor-pointer transition-colors border-b border-gray-50 last:border-0 font-medium text-gray-700';
+                    item.textContent = sekolah.namaAsli.trim(); 
+                    
+                    item.addEventListener('click', function() {
+                        inputCari.value = sekolah.namaAsli.trim();
+                        kontainerHasil.classList.add('hidden');
+                        
+                        const koordinat = sekolah.layer.getLatLng();
+                        map.flyTo(koordinat, 16, {
+                            animate: true,
+                            duration: 1.5
+                        });
+                        
+                        sekolah.layer.openPopup();
+                    });
+                    
+                    kontainerHasil.appendChild(item);
+                });
+            } else {
+                kontainerHasil.classList.remove('hidden');
+                const itemKosong = document.createElement('div');
+                itemKosong.className = 'px-4 py-2.5 text-gray-400 italic text-xs';
+                itemKosong.textContent = 'Sekolah tidak ditemukan...';
+                kontainerHasil.appendChild(itemKosong);
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!inputCari.contains(e.target) && !kontainerHasil.contains(e.target)) {
+                kontainerHasil.classList.add('hidden');
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!inputCari.contains(e.target) && !kontainerHasil.contains(e.target)) {
+                kontainerHasil.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
