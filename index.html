@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduGIS SMAN Kabupaten Klaten</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts & Animate.css untuk Animasi Seru -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .hero-mesh {
+            background-color: #1A2E1F;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(71, 122, 66, 0.4) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(26, 44, 31, 0.8) 0px, transparent 50%),
+                url('https://ik.imagekit.io/tvlk/blog/2025/05/shutterstock_1593232195.png?tr=q-70,c-at_max,w-500,h-250,dpr-2');
+            background-size: cover;
+            background-position: center;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+    </style>
+</head>
+<body class="bg-[#F3F7F2] text-gray-900 overflow-x-hidden">
+
+    <!-- DEKORASI BULATAN ABSTRAK NYENTRIK -->
+    <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#E2ECE0] rounded-full blur-3xl -z-10 opacity-70"></div>
+    <div class="absolute top-[60%] right-[-10%] w-[600px] h-[600px] bg-[#D7E4D4] rounded-full blur-3xl -z-10 opacity-60"></div>
+
+    <!-- NAVBAR -->
+    <div class="w-full px-4 pt-6 sticky top-0 z-50 animate__animated animate__fadeInDown">
+        <nav class="glass-card max-w-6xl mx-auto px-8 py-4 flex justify-between items-center rounded-3xl shadow-[0_20px_50px_rgba(65,100,74,0.05)]">
+            <div class="text-2xl font-black tracking-tight text-[#2C4A30] flex items-center gap-2">
+                <span class="inline-block p-2 bg-[#2C4A30] text-[#E2ECE0] rounded-2xl text-lg shadow-md shadow-[#2C4A30]/20">🏫</span>
+                <span>Edu<span class="text-[#558850]">GIS.</span></span>
+            </div>
+            <div class="hidden md:flex gap-10 font-bold text-sm text-gray-600">
+                <a href="index.html" class="text-[#2C4A30] bg-[#E2ECE0]/60 px-4 py-2 rounded-xl transition-all">Beranda</a>
+                <a href="pages/peta.html" class="hover:text-[#2C4A30] py-2 transition-all hover:scale-105">Peta Digital</a>
+                <a href="pages/profil.html" class="hover:text-[#2C4A30] py-2 transition-all hover:scale-105">Profil</a>
+            </div>
+            <a href="pages/peta.html" class="bg-[#2C4A30] hover:bg-[#3D6643] text-white px-6 py-3 rounded-2xl font-bold text-xs tracking-wider uppercase transition-all duration-300 shadow-xl shadow-[#2C4A30]/20 hover:-translate-y-1">
+                Eksplorasi Ruang →
+            </a>
+        </nav>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="max-w-7xl mx-auto px-4 pt-8 pb-12 animate__animated animate__fadeIn animate__delay-1s">
+        <div class="hero-mesh rounded-[3rem] min-h-[640px] flex flex-col justify-center p-8 md:p-24 relative overflow-hidden shadow-2xl shadow-[#2C4A30]/20">
+            <!-- Overlay warna lembut -->
+            <div class="absolute inset-0 bg-gradient-to-r from-[#1A2E1F]/90 via-[#1A2E1F]/70 to-transparent"></div>
+            
+            <div class="max-w-2xl text-white relative z-10 space-y-8">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-xs font-bold tracking-widest uppercase text-emerald-300">
+                    🚀 Spasial Pendidikan Digital
+                </div>
+                <h1 class="text-4xl md:text-7xl font-black tracking-tight leading-[1.1] animate__animated animate__fadeInLeft animate__delay-1s">
+                Pemetaan Persebaran <br><span class="text-[#C1DEC0]">SMA Negeri</span> Klaten
+                </h1>
+                <p class="text-base md:text-lg text-gray-200/90 font-medium leading-relaxed max-w-xl">
+                    Sistem Geografis interaktif untuk menganalisis jangkauan sarana pendidikan. Temukan informasi lokasi Sekolah Menengah Atas Negeri di Kabupaten Klaten.
+                </p>
+                <div class="pt-4 flex flex-wrap gap-4">
+                    <a href="pages/peta.html" class="bg-[#C1DEC0] hover:bg-white text-[#1A2E1F] px-8 py-4 rounded-2xl font-extrabold text-base transition-all duration-300 shadow-xl shadow-black/10 hover:-translate-y-1 flex items-center gap-2 group">
+                        Buka Peta Interaktif 
+                        <span class="group-hover:translate-x-2 transition-transform">🧭</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COUNTER / DASHBOARD STATISTIK MINI -->
+    <section class="max-w-4xl mx-auto px-4 -mt-20 relative z-20 mb-20 animate__animated animate__fadeInUp animate__delay-1s">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-white/80 backdrop-blur-md p-6 rounded-[2.5rem] border border-gray-200/50 shadow-xl shadow-gray-300/30">
+            
+            <div class="text-center p-4 md:border-r border-gray-100">
+                <div class="text-3xl font-black text-[#2C4A30]">15</div>
+                <div class="text-xs text-gray-400 font-bold mt-1 uppercase">Total SMAN</div>
+            </div>
+            
+            <div class="text-center p-4 md:border-r border-gray-100">
+                <div class="text-3xl font-black text-[#2C4A30]">26</div>
+                <div class="text-xs text-gray-400 font-bold mt-1 uppercase">Total Kecamatan</div>
+            </div>
+            
+            <div class="text-center p-4">
+                <div class="text-3xl font-black text-[#2C4A30]">2026</div>
+                <div class="text-xs text-gray-400 font-bold mt-1 uppercase">Tahun Pembaruan</div>
+            </div>
+            
+        </div>
+    </section>
+
+</body>
+</html>
